@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div {
+  user-select: none;
+}
+
+.container {
+  max-width: 600px;
+  width: 95%;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  background-color: lightgray;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+header {
+  text-align: center;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+section {
+  margin: 20px auto;
+  text-align: center;
+  width: 150px;
+}
+
+section h2 {
+  margin-bottom: 10px;
+}
+
+#student-list div,
+#random-student-list div {
+    background-color: lightcoral;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+#randomize-button,
+#clear-button {
+  cursor: pointer;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: chocolate;
+  color: white;
+  border-radius: 5px;
+  border: 2px solid chocolate;
+}
+
+#randomize-button:hover,
+#clear-button:hover {
+  background-color: antiquewhite;
+  color: chocolate;
+}
+
+footer {
+  margin-top: 15px;
+}
