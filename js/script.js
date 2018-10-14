@@ -11,6 +11,7 @@ console.log('JS is running');
       orderedView.init();
       randomView.init();
       buttonView.init();
+      inputView.init();
     },
 
     getStudentList: function() {
@@ -42,6 +43,28 @@ console.log('JS is running');
 
     updateRandomView: function() {
       randomView.render();
+    },
+
+    showTeamForm() {
+      inputView.teamForm.style.display = 'flex';
+      inputView.nameInput.focus();
+      buttonView.teamButton.style.display = 'none';
+    },
+
+    addNewTeam() {
+      buttonView.teamButton.style.display = 'block';
+      inputView.teamForm.style.display = 'none';
+
+      //update student list
+      if (inputView.nameInput.value) {
+        model.studentsList = inputView.nameInput.value.split(',').map(s => s.trim());
+        inputView.nameInput.value = '';
+        this.clearList();
+        this.updateRandomView();
+        orderedView.render();
+      } else {
+        alert('Cannot create an empty team');
+      }
     }
   }
 
@@ -53,6 +76,12 @@ console.log('JS is running');
 
     render: function() {
       const students = controller.getStudentList();
+
+      // empty the randomListView from previous list
+      while(this.orderedListView.hasChildNodes()) {
+        this.orderedListView.removeChild(this.orderedListView.lastChild);
+      }
+
       for (let i=0; i<students.length; i++) {
         let studentDiv = document.createElement('div');
         studentDiv.textContent = students[i];
@@ -88,21 +117,36 @@ console.log('JS is running');
   const buttonView = {
     init: function() {
       this.randomizeButton = document.getElementById("randomize-button");
-      this.clearButton = document.getElementById("clear-button");
-      this.render();
-    },
-
-    render: function() {
       this.randomizeButton.addEventListener('click', function() {
         controller.randomizeList();
         controller.updateRandomView();
       });
 
+
+      this.clearButton = document.getElementById("clear-button");
       this.clearButton.addEventListener('click', function() {
         controller.clearList();
         controller.updateRandomView();
+      });
+
+      this.teamButton = document.getElementById('team-button');
+      this.teamButton.addEventListener('click', function() {
+        controller.showTeamForm();
+      });
+
+    },
+  }
+
+  const inputView = {
+    init: function() {
+      this.teamForm = document.getElementById('team-input');
+      this.teamForm.style.display = 'none';
+      this.nameInput = document.getElementById('team-names');
+      this.createButton = document.getElementById('create-button');
+      this.createButton.addEventListener('click', function() {
+        controller.addNewTeam();
       })
-    }
+    },
   }
 
   controller.init();

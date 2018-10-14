@@ -11,7 +11,7 @@ div {
 .container {
   max-width: 600px;
   width: 95%;
-  margin: 50px auto;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   align-items: center;  
@@ -22,6 +22,7 @@ div {
 
 header {
   text-align: center;
+  width: 100%;
 }
 
 main {
@@ -50,6 +51,8 @@ section h2 {
     padding: 10px;
 }
 
+#team-button,
+#create-button,
 #randomize-button,
 #clear-button {
   cursor: pointer;
@@ -61,10 +64,28 @@ section h2 {
   border: 2px solid chocolate;
 }
 
+#team-button:hover,
+#create-button:hover,
 #randomize-button:hover,
 #clear-button:hover {
   background-color: antiquewhite;
   color: chocolate;
+}
+
+#create-button {
+  width: auto;
+  margin: 0;
+}
+
+#team-names {
+  width: 100%;
+  padding: 10px;
+}
+
+.new-team-input {
+  display: flex;
+  align-items: space-between;
+  justify-content: space-between;
 }
 
 footer {
