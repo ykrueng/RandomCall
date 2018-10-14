@@ -75,7 +75,8 @@ console.log('JS is running');
     },
 
     render: function() {
-      const students = controller.getStudentList();
+      const students = controller.getStudentList().filter(e => e);
+      console.log(students);
 
       // empty the randomListView from previous list
       while(this.orderedListView.hasChildNodes()) {
@@ -93,12 +94,11 @@ console.log('JS is running');
   const randomView = {
     init: function() {
       this.randomListView = document.getElementById("random-student-list");
-      // controller.randomizeList();
       this.render();
     },
 
     render: function() {
-      const students = controller.getRandomStudentList();
+      const students = controller.getRandomStudentList().filter(e => e);
 
       // empty the randomListView from previous list
       while(this.randomListView.hasChildNodes()) {
