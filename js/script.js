@@ -57,7 +57,7 @@ console.log('JS is running');
 
       //update student list
       if (inputView.nameInput.value) {
-        model.studentsList = inputView.nameInput.value.split(',').map(s => s.trim());
+        model.studentsList = inputView.nameInput.value.split(',').map(s => s.trim().slice(0,12));
         inputView.nameInput.value = '';
         this.clearList();
         this.updateRandomView();
